@@ -5,6 +5,15 @@ angular.module('chatroom').service('messageService', function($http){
   //The url for the get request should be 'https://practiceapi.devmountain.com/api/chats'
   //Be sure to return whatever gets returned from $http so you can call .then in your controller.
 
+  var baseUrl = 'https://practiceapi.devmountain.com/api/chats';
+
+this.getMessages = function(){
+  return $http({
+    method: "GET",
+    url: baseUrl
+  });
+
+};
 
 
 
@@ -13,6 +22,16 @@ angular.module('chatroom').service('messageService', function($http){
   //Because we're making a POST request, need a data object with a message property IE data: {message: "Hello World"}
   //Also, remember that $http returns a promise. So return the whole $http call (return $http(...)), so you can then use .then in your controller.
 
+  this.postMessage = function(message){
+    // return $http({
+    //   url: baseUrl,
+    //   method: "POST",
+    // data: {
+    //   message: message
+    //   }
+    // });
+    return $http.post(baseUrl, {message: message})
+  };
 
 
 
